@@ -42,8 +42,7 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
         This function ensures that the user gets the correct 
-        page of data even if some rows have been removed 
-        from the dataset between queries
+        pages of data
         """
         assert isinstance(index, int) and isinstance(page_size, int)
         assert index >= 0 and page_size > 0
