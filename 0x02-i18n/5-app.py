@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""A Basic Flask app with internationalization support.
+"""Setting up a  python flask environent.
 """
 from flask_babel import Babel
 from flask import Flask, render_template, request, g
 
 
 class Config:
-    """Represents a Flask Babel configuration.
+    """Setting up the configuration default values.
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
@@ -26,7 +26,7 @@ users = {
 
 def get_user(login_id):
     """
-    returns a user dictionary or None
+    Returns a user dictionary or None
     """
     if login_id is None:
         return None
@@ -35,17 +35,16 @@ def get_user(login_id):
 
 @app.before_request
 def before_request():
-    """executes before other functions are executed"""
+    """This func executes before others"""
     g.user = get_user(request.args.get('login_as'))
 
 
 @babel.localeselector
 def get_locale():
-    """determines the best match from languages"""
+    """Getting the locale language using the babel.localeselector deco"""
     locale = request.args.get('locale')
     """
-    detect if the incoming request contains locale argument
-    and ifs value is a supported locale
+    determines if the incoming request contains locale argument
     """
     if locale:
         return locale
@@ -54,7 +53,7 @@ def get_locale():
 
 @app.route('/')
 def hello_world():
-    """Method that renders a template"""
+    """The index page to be rendered """
     return render_template("5-index.html")
 
 
