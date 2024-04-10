@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Setting up a  python flask environent"""
 from flask import Flask, render_template, request
-from flask_babel import Babel  # type: ignore
+from flask_babel import Babel
 
 
 app = Flask(__name__)
@@ -24,7 +24,7 @@ babel = Babel(app)
 @babel.localeselector
 def get_locale():
     '''
-    Getting the locale language using the babel.localeselector decorator
+    Getting the locale language using the babel.localeselector deco
     '''
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
